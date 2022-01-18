@@ -4,20 +4,15 @@ console.log(str.split());
 
 
 console.log("Task2")
-let name="Василий";
-let name2="гость";
-let messege;
-function hello2(greeting="Привет",name){
+
+function hello2(name){
     if(name){
-        messege=greeting+","+name+"!";
+        console.log(`Привет, ${name}`);
     }else{
-        messege=greeting+","+name2+"!";
+        console.log (`Привет, гость`);
     }
 }
-hello2(undefined,"Василий")
-console.log(messege);
-hello2()
-console.log(messege);
+hello2("Василий");
 
 
 console.log("Task3")

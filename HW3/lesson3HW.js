@@ -30,13 +30,16 @@ console.log(sumArray);
 
 
 console.log("Task4")
-function Pass(key,value,obj){
-    this.newkey = key;
-    this.newvalue = value;
-    this.newobj = obj;
+let obj={
+  name:"Valentina",
+  pass:"pwd"
 }
-let pass2 = new Pass("Ключь", 123, "новый");
-console.log(pass2);
+function pass(key,value,obj){
+  if (obj[key]===undefined){
+    obj[key]=value
+  }
+}
+console.log(obj);
 
 
 
@@ -72,13 +75,22 @@ console.log(increase);
 
 
 console.log("Task7")
-let now = new Date();
-let birthday = new Date(1990,3,27);
-let usernow=new Date(now.getFullYear(),now.getMonth(),now.getDate());
-let userbirthday= new Date(birthday.getFullYear(),birthday.getMonth(),birthday.getDate());
+user = {
+birthdayDate: new Date("1990-04-27")
+}
 
-console.log(usernow-userbirthday);
+console.log(user.birthdayDate.toLocaleString());
 
+function whenNextBirthday(){
+  let now = new Date();
+  let nextbirthday =user.birthdayDate;
+  if (now.getMonth()>user.birthdayDate.getMonth()|| (now.getMonth()===user.birthdayDate.getMonth() && now.getDate()>user.birthdayDate.getDate())){
+    nextbirthday.setFullYear(now.getFullYear()+1)
+  }else{
+    nextbirthday.setFullYear(now.getFullYear())
+  }
+  console.log((nextbirthday-now)/(1000*60*60*24));
+} 
 
 
 

@@ -10,16 +10,18 @@ console.log (typeof a)
 console.log (typeof {name:"Valentina"})
 
 console.log("Task 3")
-let Name
-if (Name=String) {
-    alert("Привет, Валентина!");
-} else {
-    alert("Ошибка, не тот тип данных");
+let name = "Valentina"
+if(typeof name == "string"){
+    console.log("Привет", name);
+}else{
+    console.log("Ошибка");
 }
+
 
 console.log ("Task 4")
 
-let username=Name=String?"Привет, Валентина!":"Ошибка, не тот тип данных";
+let username="Valentina"
+console.log((typeof name=="string")?`Привет ${username}`:"Ошибка, не тот тип данных");
 
 
 console.log ("Task 5")
