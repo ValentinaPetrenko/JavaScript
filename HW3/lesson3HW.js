@@ -51,7 +51,7 @@ while (answer === false);
 
 console.log("Task6")
 let numb=[1,4,-2,3,2,-4];
-let sum = numb.reduce((acc, value) => acc + value);
+let sum = numb.reduce;
 console.log (sum);
 
 let descending = numb.sort ((el1,el2) =>{

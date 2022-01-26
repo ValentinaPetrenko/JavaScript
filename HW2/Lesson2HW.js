@@ -65,3 +65,28 @@ numbers.forEach(
 console.log(numbers);
 
 
+console.log('Task 7');
+function onlyNumbArr(array) {
+    return array.filter(function (arrayElement) {
+        return typeof arrayElement === 'number';
+    })
+}
+console.log(onlyNumbArr([1, 'hello', 2, 3, 4, '5', '6', 7, null]));
+
+
+
+
+
+console.log('Task 8');
+function multiply(a, b) {
+    let multiplyTable = [null];
+    for (let i = 1; i <= 10; i++) {
+        let multiplyResult = [null];
+        for (let j = 1; j <= 10; j++) {
+            multiplyResult.push(i * j)
+        }
+        multiplyTable.push(multiplyResult);
+    }
+    return multiplyTable[a][b]
+}
+console.log(multiply(5,6));

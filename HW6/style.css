@@ -1,0 +1,13 @@
+.block{
+    display: flex;
+    
+}
+.block2{
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    border:1px solid #555;
+   
+}
+
