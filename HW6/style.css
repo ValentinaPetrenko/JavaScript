@@ -1,13 +1,19 @@
-.block{
-    display: flex;
-    
+* {
+    box-sizing: border-box;
 }
-.block2{
-    font-size: 20px;
-    width: 30px;
-    height: 30px;
-    margin: 10px;
-    border:1px solid #555;
-   
+.tab {
+    border: 2px rgb(115, 247, 8) solid;
+} 
+
+.block{
+
+    background-color: rgb(206, 165, 165);
+    margin: 5px;    
 }
 
+.td{
+    text-align: center;
+    border: 1px rgb(53, 18, 209) solid;
+    width: 50px;
+    height: 50px; 
+}

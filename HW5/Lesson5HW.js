@@ -81,27 +81,87 @@ const studentArr = [{
 
 
 
-class Student {
-    constructor(studentArr = []){
-        Object.assign(this, studentArr);
+// class Student {
+//     constructor(studentArr = []){
+//         Object.assign(this, studentArr);
         
-        };
+//         };
     
-        getisSelfPayment() {
-          if (this.ratingPoint>=800){
-              return `${this.name} ${this.surname} ${this.ratingPoint}, поздравляем вы на бюджете!`
-          }else{
-              return `${this.name} ${this.surname} ${this.ratingPoint} , вы на контракте!`
-          }
+//         getisSelfPayment() {
+//           if (this.ratingPoint>=800){
+//               return `${this.name} ${this.surname} ${this.ratingPoint}, поздравляем вы на бюджете!`
+//           }else{
+//               return `${this.name} ${this.surname} ${this.ratingPoint} , вы на контракте!`
+//           }
+//         }
+// }
+
+// let students=new Student(studentArr);
+// console.log(students.getisSelfPayment());
+
+class Student {
+    constructor(enrollee = {}) {
+        this.id = Student.incrementId();
+        this.name = enrollee.name;
+        this.surname = enrollee.surname;
+        this.ratingPoint = enrollee.ratingPoint;
+        this.schoolPoint = enrollee.schoolPoint;
+        Student.listOfStudents = {id: this.id, ...enrollee,};
+    }
+  
+    static get listOfStudents() {
+        return this.studentsList || []
+    }
+  
+    static set listOfStudents(student) {
+        const studentList = this.studentsList || [];
+        student.isSelfPayment = true;
+        if (student.ratingPoint >= 800 && studentList.length < 5) {
+            student.isSelfPayment = false;
         }
-}
+        if (studentList.length >= 5) {
+            let notSelfPayment = studentList.filter((person) => !person.isSelfPayment);
+            let selfPayment = studentList.filter((person) => person.isSelfPayment);
+  
+            if (student.ratingPoint >= 800) {
+                student.isSelfPayment = false;
+                notSelfPayment.unshift(student);
+  
+                if (notSelfPayment.length > 5) {
+                    let notSelfPaymentSort = notSelfPayment.sort((a, b) => a.ratingPoint - b.ratingPoint);
+                    if (notSelfPaymentSort[0].ratingPoint === notSelfPaymentSort[1].ratingPoint) {
+                        notSelfPaymentSort[0].isSelfPayment = notSelfPaymentSort[0].schoolPoint < notSelfPaymentSort[1].schoolPoint;
+                        notSelfPaymentSort[1].isSelfPayment = notSelfPaymentSort[0].schoolPoint > notSelfPaymentSort[1].schoolPoint;
+                    } else {
+                        notSelfPaymentSort[0].isSelfPayment = notSelfPaymentSort[0].ratingPoint < notSelfPaymentSort[1].ratingPoint;
+                        notSelfPaymentSort[1].isSelfPayment = notSelfPaymentSort[0].ratingPoint > notSelfPaymentSort[1].ratingPoint;
+                    }
+                    notSelfPayment = notSelfPaymentSort;
+                }
+            } else {
+                selfPayment.push(student)
+            }
+            return this.studentsList = [...notSelfPayment, ...selfPayment];
+        }
+        return this.studentsList = [...studentList, student];
+    }
+  
+    static incrementId() {
+        if (!this.latestId) this.latestId = 1;
+        else this.latestId++;
+        return this.latestId;
+    }
+  }
+  
+  studentArr.forEach(student => new Student(student));
+  console.log(Student.listOfStudents);
 
-let students=new Student(studentArr);
-console.log(students.getisSelfPayment());
-
-
-
-
+  console.log(new Student(studentArr));
+  console.log(new Student(studentArr[1]));
+  console.log(new Student(studentArr[2]));
+  console.log(new Student(studentArr[3]));
+  console.log(new Student(studentArr[4]));
+  console.log(new Student(studentArr[5]));
 
 
 

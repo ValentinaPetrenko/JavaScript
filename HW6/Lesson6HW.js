@@ -1,25 +1,24 @@
 console.log("Task1")
  
-let parent = document.getElementById('chat');
-let line = document.createElement('div');
-line.className= "line"
+let table = document.createElement("table");
+table.className = "tab"
 
-for(let i = 0; i<10; i++){
-    let newDiv = document.createElement('div');
-    newDiv.className= "block"
-    line.appendChild(newDiv)
-    for(let j=0;j<10;j++){
-        let newDiv2=document.createElement('div');
-        newDiv2.className="block2"
-        newDiv2.textContent=i*j
-        newDiv.appendChild(newDiv2)
+document.body.append(table);
+
+for (let i = 0; i <= 10; i++) {
+    let tr = document.createElement("tr");
+    tr.className = "block"
+
+    table.appendChild(tr);
+
+    for (let j = 0; j <= 10; j++) {
+        let td = document.createElement("td");
+        td.className = "td"
+
+        tr.appendChild(td);
+        td.innerText = i * j;
     }
 }
-
-console.log(line);
-// parent.appendChild(line);
-// Не пойму как все добавить в parent
-
 
 
 
