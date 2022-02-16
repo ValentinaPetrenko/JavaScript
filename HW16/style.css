@@ -1,0 +1,40 @@
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+#listOfBeer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product_item {
+    width: 300px;
+    
+    border: #DDDADA solid 1px;
+    border-radius: 7px;
+    box-shadow: 0 0 10px #dddada;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.img_product {
+    width: 100%;
+    text-align: center;
+}
+
+.content_product {
+    width: 100%;
+    padding: 10px 10px;
+    text-align: center;
+}
+
+
+img.img_card {
+    width: 200px;
+    height: 400px
+}
+
